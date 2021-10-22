@@ -4,22 +4,22 @@
             <img width="35px" src="https://yt3.ggpht.com/UhjsV-ihiyEBav8xnrM6Ud2ARTYiiPs8o71LsPDfPunxrtFumlSUc1ydpBice0Z4WOLDcDOboA=s88-c-k-c0x00ffffff-no-rj" alt="">
         </div>
         <div class="headerLinks">
-            <span @click="aboutContextMenu = true" >
+            <span @mouseover="toggleContextMenu('about', true)">
                 О нас
             </span>
-            <span @click="aboutContextMenu = true" >
+            <span @mouseover="toggleContextMenu('carrier', true)">
                 Карьера
             </span>
-            <span @click="aboutContextMenu = true" >
+            <span @mouseover="toggleContextMenu('investors', true)">
                 Инвесторам
             </span>
-            <span @click="aboutContextMenu = true" >
+            <span @mouseover="toggleContextMenu('commitments', true)">
                 Наши обязанности
             </span>
-            <span @click="aboutContextMenu = true" >
+            <span @mouseover="toggleContextMenu('news', true)">
                 Новости
             </span>
-            <span class="material-icons" @click="aboutContextMenu = true" >
+            <span class="material-icons">
                 search
             </span>
         </div>
@@ -37,7 +37,15 @@ export default {
             commitmentsContextMenu: false,
             newsroomContextMenu: false,
         }
-    }
+    },
+    emits: [
+        'toggleContextMenu'
+    ],
+    methods: {
+        toggleContextMenu(contextMenu, toggler){
+            this.$emit('toggleContextMenu', contextMenu, toggler)
+        }
+    },
 }
 </script>
 

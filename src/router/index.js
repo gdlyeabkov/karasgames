@@ -6,6 +6,8 @@ import Commitments from '../views/Commitments.vue'
 import News from '../views/News.vue'
 import Carrier from '../views/Carrier.vue'
 import Investors from '../views/Investors.vue'
+import Releases from '../views/Releases.vue'
+import Contacts from '../views/Contacts.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +41,16 @@ const routes = [
     path: '/commitments',
     name: 'Commitments',
     component: Commitments
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: Contacts
+  },
+  {
+    path: '/releases',
+    name: 'Releases',
+    component: Releases
   },
 ]
 
