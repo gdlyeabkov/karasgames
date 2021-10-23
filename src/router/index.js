@@ -12,6 +12,10 @@ import Report from '../views/Report.vue'
 import Donat from '../views/Donat.vue'
 import Subscription from '../views/Subscription.vue'
 import Dividend from '../views/Dividend.vue'
+import Corp from '../views/Corp.vue'
+import Projects from '../views/Projects.vue'
+import Leaderboard from '../views/Leaderboard.vue'
+import BoardOfDirectors from '../views/BoardOfDirectors.vue'
 
 Vue.use(VueRouter)
 
@@ -76,7 +80,26 @@ const routes = [
     name: 'Dividend',
     component: Dividend
   },
-  
+  {
+    path: '/corp',
+    name: 'Corp',
+    component: Corp
+  },
+  {
+    path: '/projects',
+    name: 'Projects',
+    component: Projects
+  },
+  {
+    path: '/leaders',
+    name: 'Leaderboard',
+    component: Leaderboard
+  },
+  {
+    path: '/directors',
+    name: 'BoardOfDirectors',
+    component: BoardOfDirectors
+  },
 ]
 
 const router = new VueRouter({
