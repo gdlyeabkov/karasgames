@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Header />
+        <Header @toggleContextMenu="toggleContextMenuHandler" />
         <div class="main">
             <div class="donatPoster">
                 <div class="donatPosterContent">
                     <span class="donatPosterContentLabel">
-                        Dividend FAQ
+                        FAQ для дивидендов
                     </span>
                 </div>
             </div>
@@ -76,6 +76,82 @@
                     </span>
                 </div>
             </div>   
+            <div v-if="aboutContextMenu" class="aboutContextMenu" @mouseleave="toggleContextMenuHandler('about', false)">
+                <span @click="$router.push({ name: 'Home' })">
+                Кто мы
+                </span>
+                <span @click="$router.push({ name: 'Projects' })">
+                Наши проекты
+                </span>
+                <span @click="$router.push({ name: 'Leaderboard' })">
+                Лидерство
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Направления
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Многообразие
+                </span>
+                <span @click="$router.push({ name: 'Locations' })">
+                Где нас найти
+                </span>
+                <span @click="$router.push({ name: 'Contacts' })">
+                Контакты
+                </span>
+            </div>
+            <div v-else-if="carrierContextMenu" class="carrierContextMenu" @mouseleave="toggleContextMenuHandler('carrier', false)">
+                <span @click="$router.push({ name: 'Home' })">
+                Работа у нас
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Ветераны
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Ученики
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Преимущества
+                </span>
+            </div>
+            <div v-else-if="investorsContextMenu" class="investorsContextMenu" @mouseleave="toggleContextMenuHandler('investors', false)">
+                <span @click="$router.push({ name: 'Report' })">
+                Доклады
+                </span>
+                <span @click="$router.push({ name: 'Releases' })">
+                Выпуски
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Представления
+                </span>
+                <span @click="$router.push({ name: 'Performance' })">
+                Производительность
+                </span>
+                <span @click="$router.push({ name: 'Corp' })">
+                Компания
+                </span>
+                <span @click="$router.push({ name: 'Dividends' })">
+                Дивиденды
+                </span>
+                <span @click="$router.push({ name: 'Subscription' })">
+                Подписка
+                </span>
+            </div>
+            <div v-else-if="commitmentsContextMenu" class="commitmentsContextMenu" @mouseleave="toggleContextMenuHandler('commitments', false)">
+                <span @click="$router.push({ name: 'Donat' })">
+                Донаты
+                </span>
+                <span @click="$router.push({ name: 'Report' })">
+                Выступления
+                </span>
+            </div>
+            <div v-else-if="newsContextMenu" class="newsContextMenu" @mouseleave="toggleContextMenuHandler('news', false)">
+                <span @click="$router.push({ name: 'Releases' })">
+                Выпуски
+                </span>
+                <span @click="$router.push({ name: 'Contacts' })">
+                Медиа-контакты
+                </span>
+            </div>
         </div>
         <Footer />
     </div>
@@ -93,7 +169,28 @@ export default {
             amIEntitledToDividends: false,
             howWillIReceiveMyCashDividends: false,
             whatIsDirectRegistration: false,
-            howCanIListCashDividendsForTaxPurposes: false
+            howCanIListCashDividendsForTaxPurposes: false,
+            aboutContextMenu: false,
+            carrierContextMenu: false,
+            investorsContextMenu: false,
+            commitmentsContextMenu: false,
+            newsContextMenu: false,
+        }
+    },
+    methods: {
+        toggleContextMenuHandler(contextMenu, toggler){
+        if(contextMenu.includes('about')) {
+            this.aboutContextMenu = toggler
+        } else if(contextMenu.includes('carrier')) {
+            this.carrierContextMenu = toggler
+        } else if(contextMenu.includes('investors')) {
+            this.investorsContextMenu = toggler
+        } else if(contextMenu.includes('commitments')) {
+            this.commitmentsContextMenu = toggler
+        } else if(contextMenu.includes('news')) {
+            this.newsContextMenu = toggler
+        }
+        
         }
     },
     components: {
@@ -147,7 +244,7 @@ export default {
         padding: 15px;
         border-bottom: 1px solid rgb(255, 255, 255);
         cursor: pointer;
-        background-color: rgb(225, 225, 225);
+        background-color: rgb(175, 175, 175);
     }
 
     .question {
@@ -160,11 +257,11 @@ export default {
     }
 
     .question:hover {
-        background-color: rgb(225, 225, 225);
+        background-color: rgb(175, 175, 175);
     }
     
     .activeQuestion {
-        background-color: rgb(225, 225, 225);
+        background-color: rgb(175, 175, 175);
     }
 
     .questionHeader {
@@ -172,5 +269,84 @@ export default {
         font-size: 18px;
     }
 
+    .aboutContextMenu {
+        position: absolute;
+        top: 50px;
+        left: 500px;
+        box-sizing: border-box;
+        padding: 15px;
+        background-color: rgb(0, 0, 0);
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 15px;
+        width: 250px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+
+  .carrierContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 600px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .investorsContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 725px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .commitmentsContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 900px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .newsContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 1000px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutContextMenu > span, .carrierContextMenu > span, .investorsContextMenu > span, .commitmentsContextMenu > span, .newsContextMenu > span {
+    margin: 5px 0px;
+    cursor: pointer;
+  }
 
 </style>

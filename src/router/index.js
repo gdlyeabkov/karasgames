@@ -16,6 +16,8 @@ import Corp from '../views/Corp.vue'
 import Projects from '../views/Projects.vue'
 import Leaderboard from '../views/Leaderboard.vue'
 import BoardOfDirectors from '../views/BoardOfDirectors.vue'
+import Diversity from '../views/Diversity.vue'
+import Locations from '../views/Locations.vue'
 
 Vue.use(VueRouter)
 
@@ -100,6 +102,17 @@ const routes = [
     name: 'BoardOfDirectors',
     component: BoardOfDirectors
   },
+  {
+    path: '/diversity',
+    name: 'Diversity',
+    component: Diversity
+  },
+  {
+    path: '/locations',
+    name: 'Locations',
+    component: Locations
+  },
+  
 ]
 
 const router = new VueRouter({

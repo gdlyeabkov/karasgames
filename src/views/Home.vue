@@ -89,10 +89,10 @@
         <span @click="$router.push({ name: 'Home' })">
           Кто мы
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Projects' })">
           Наши проекты
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Leaderboard' })">
           Лидерство
         </span>
         <span @click="$router.push({ name: 'Home' })">
@@ -101,10 +101,10 @@
         <span @click="$router.push({ name: 'Home' })">
           Многообразие
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Locations' })">
           Где нас найти
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Contacts' })">
           Контакты
         </span>
       </div>
@@ -123,25 +123,25 @@
         </span>
       </div>
       <div v-else-if="investorsContextMenu" class="investorsContextMenu" @mouseleave="toggleContextMenuHandler('investors', false)">
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Report' })">
           Доклады
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Releases' })">
           Выпуски
         </span>
         <span @click="$router.push({ name: 'Home' })">
           Представления
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Performance' })">
           Производительность
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Corp' })">
           Компания
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Dividends' })">
           Дивиденды
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Subscription' })">
           Подписка
         </span>
       </div>

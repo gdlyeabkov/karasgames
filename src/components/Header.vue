@@ -19,9 +19,15 @@
             <span @mouseover="toggleContextMenu('news', true)">
                 Новости
             </span>
-            <span class="material-icons">
+            <span @click="searher = !searher" v-if="!searher" class="clickable material-icons">
                 search
             </span>
+            <div class="searcher" v-else>
+                <input type="text" v-model="keywords" placeholder="Что будем искать?" class="form-control searcherInput" @keyup.enter="search()">
+                <span @click="searher = !searher" class="clickable material-icons">
+                    close
+                </span>
+            </div>
         </div>
     </div>
 </template>
@@ -31,6 +37,8 @@ export default {
     name: 'Header',
     data(){
         return {
+            keywords: '',
+            searher: false,
             aboutContextMenu: false,
             carrierContextMenu: false,
             investorContextMenu: false,
@@ -44,6 +52,9 @@ export default {
     methods: {
         toggleContextMenu(contextMenu, toggler){
             this.$emit('toggleContextMenu', contextMenu, toggler)
+        },
+        search(){
+            this.$router.push({ name: 'Home', query: { keywords: keywords } })
         }
     },
 }
@@ -84,6 +95,24 @@ export default {
 
     .headerLinks > span:hover {
         text-decoration: underline;
+    }
+
+    .searcher {
+        position: absolute;
+        top: 7px;
+        left: calc(100% - 425px);
+        display: flex;
+        align-items: center;
+    }
+
+    .searcherInput {
+        width: 375px;
+        border: 3px solid rgb(200, 175, 0);
+    }
+
+    .clickable {
+        cursor: pointer;
+        margin-left: 15px;
     }
 
 </style>

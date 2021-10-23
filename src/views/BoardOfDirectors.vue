@@ -1,17 +1,97 @@
 <template>
     <div>
-        <Header />
+        <Header @toggleContextMenu="toggleContextMenuHandler" />
         <div class="main">
-            <div class="corpPoster">
-                <div class="corpPosterContent">
-                    <span class="corpPosterContentLabel">
-                        Связи с инвесторами
-                    </span>
-                </div>
-            </div>
-            <p>
-                Board of Directors
+            <p class="directorsHeader">
+                Список персонала
             </p>
+            <div class="member">
+                <p class="memberName">
+                    СЕВА КАРАСЬ
+                </p>
+                <p class="memberProffession">
+                    ДИРЕКТОР
+                </p>
+                <p class="memberDesc">
+                    Сева Карась создал компанию karas Games и придумал игру Escape from jail.
+                </p>
+            </div>
+            <div v-if="aboutContextMenu" class="aboutContextMenu" @mouseleave="toggleContextMenuHandler('about', false)">
+                <span @click="$router.push({ name: 'Home' })">
+                Кто мы
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Наши проекты
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Лидерство
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Направления
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Многообразие
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Где нас найти
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Контакты
+                </span>
+            </div>
+            <div v-else-if="carrierContextMenu" class="carrierContextMenu" @mouseleave="toggleContextMenuHandler('carrier', false)">
+                <span @click="$router.push({ name: 'Home' })">
+                Работа у нас
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Ветераны
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Ученики
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Преимущества
+                </span>
+            </div>
+            <div v-else-if="investorsContextMenu" class="investorsContextMenu" @mouseleave="toggleContextMenuHandler('investors', false)">
+                <span @click="$router.push({ name: 'Home' })">
+                Доклады
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Выпуски
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Представления
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Производительность
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Компания
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Дивиденды
+                </span>
+                <span @click="$router.push({ name: 'Home' })">
+                Подписка
+                </span>
+            </div>
+            <div v-else-if="commitmentsContextMenu" class="commitmentsContextMenu" @mouseleave="toggleContextMenuHandler('commitments', false)">
+                <span @click="$router.push({ name: 'Donat' })">
+                Донаты
+                </span>
+                <span @click="$router.push({ name: 'Report' })">
+                Выступления
+                </span>
+            </div>
+            <div v-else-if="newsContextMenu" class="newsContextMenu" @mouseleave="toggleContextMenuHandler('news', false)">
+                <span @click="$router.push({ name: 'Releases' })">
+                Выпуски
+                </span>
+                <span @click="$router.push({ name: 'Contacts' })">
+                Медиа-контакты
+                </span>
+            </div>
         </div>
         <Footer />
     </div>
@@ -23,6 +103,31 @@ import Footer from "@/components/Footer.vue"
 
 export default {
     name: 'Commitments',
+    data(){
+        return {
+            aboutContextMenu: false,
+            carrierContextMenu: false,
+            investorsContextMenu: false,
+            commitmentsContextMenu: false,
+            newsContextMenu: false,
+        }
+    },
+    methods: {
+        toggleContextMenuHandler(contextMenu, toggler){
+        if(contextMenu.includes('about')) {
+            this.aboutContextMenu = toggler
+        } else if(contextMenu.includes('carrier')) {
+            this.carrierContextMenu = toggler
+        } else if(contextMenu.includes('investors')) {
+            this.investorsContextMenu = toggler
+        } else if(contextMenu.includes('commitments')) {
+            this.commitmentsContextMenu = toggler
+        } else if(contextMenu.includes('news')) {
+            this.newsContextMenu = toggler
+        }
+        
+        }
+    },
     components: {
         Header,
         Footer,
@@ -98,5 +203,108 @@ export default {
         border-radius: 15px;
         margin: 0px 35px;
     }
+
+    .member {
+        margin: 35px 0px;
+    }
+
+    .memberName {
+        font-weight: bolder;
+        font-size: 36px;
+    }
+    
+    .memberProffession {
+        font-size: 24px;
+    }
+
+    .memberDesc {
+
+    }
+
+    .directorsHeader {
+        color: rgb(150, 150, 0);
+        font-size: 48px;
+        font-weight: bolder;
+    }
+
+    .aboutContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 500px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carrierContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 600px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .investorsContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 725px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .commitmentsContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 900px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .newsContextMenu {
+    position: absolute;
+    top: 50px;
+    left: 1000px;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutContextMenu > span, .carrierContextMenu > span, .investorsContextMenu > span, .commitmentsContextMenu > span, .newsContextMenu > span {
+    margin: 5px 0px;
+    cursor: pointer;
+  }
 
 </style>
