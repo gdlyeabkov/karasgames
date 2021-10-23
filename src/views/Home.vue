@@ -146,18 +146,18 @@
         </span>
       </div>
       <div v-else-if="commitmentsContextMenu" class="commitmentsContextMenu" @mouseleave="toggleContextMenuHandler('commitments', false)">
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Donat' })">
           Донаты
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Report' })">
           Выступления
         </span>
       </div>
       <div v-else-if="newsContextMenu" class="newsContextMenu" @mouseleave="toggleContextMenuHandler('news', false)">
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Releases' })">
           Выпуски
         </span>
-        <span @click="$router.push({ name: 'Home' })">
+        <span @click="$router.push({ name: 'Contacts' })">
           Медиа-контакты
         </span>
       </div>

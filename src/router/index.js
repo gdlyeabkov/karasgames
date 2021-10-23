@@ -8,6 +8,10 @@ import Carrier from '../views/Carrier.vue'
 import Investors from '../views/Investors.vue'
 import Releases from '../views/Releases.vue'
 import Contacts from '../views/Contacts.vue'
+import Report from '../views/Report.vue'
+import Donat from '../views/Donat.vue'
+import Subscription from '../views/Subscription.vue'
+import Dividend from '../views/Dividend.vue'
 
 Vue.use(VueRouter)
 
@@ -52,6 +56,27 @@ const routes = [
     name: 'Releases',
     component: Releases
   },
+  {
+    path: '/report',
+    name: 'Report',
+    component: Report
+  },
+  {
+    path: '/donat',
+    name: 'Donat',
+    component: Donat
+  },
+  {
+    path: '/subscription',
+    name: 'Subscription',
+    component: Subscription
+  },
+  {
+    path: '/dividend',
+    name: 'Dividend',
+    component: Dividend
+  },
+  
 ]
 
 const router = new VueRouter({
